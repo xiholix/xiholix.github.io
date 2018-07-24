@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1g27swuj20mb0ujmxv.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1h6ffrmj20or0tu3z4.jpg">
-<meta property="og:updated_time" content="2018-07-24T09:30:35.997Z">
+<meta property="og:updated_time" content="2018-07-24T09:32:32.849Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Efficient Estimation of Word Representation in Vector Space">
 <meta name="twitter:description" content="Abstract本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果 Introduction之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。    本文的目标是介绍">
@@ -353,6 +353,7 @@
       
         <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果</p>
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。<br>    本文的目标是介绍一个技术能够在很大数据集上快速的学习到质量很好的词向量。</p>
+<a id="more"></a>
 <h3 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h3><p>本文采用度量模型计算复杂度的方式是由完全训练整个模型所需的参数数目决定。对于所有的模型，其计算复杂度可表示成如下公式：<br>$$O = E \times T \times Q$$<br>其中E是指训练的epoch数目，T是指训练集的词的数目，Q是每个模型进行一次训练的复杂度。不同的模型它的取值就不同。</p>
 <h4 id="前馈神经网络语言模型"><a href="#前馈神经网络语言模型" class="headerlink" title="前馈神经网络语言模型"></a>前馈神经网络语言模型</h4><p>模型由Project Layer(根据索引表示得到向量表示)，隐藏层和输出层，其Q的计算公式如下：<br>$${\rm{Q}} = N \times D + N \times D \times H + H \times V$$<br>其中$N \times D$表示的是其输入经过lookup table操作后变成一个$N \times D$的矩阵，其中N是指输入的长度，D表示词向量的维度。$N\times D \times H$表示将词向量表示的数据转换成隐藏表示的时间复杂度。最后是将隐层表示转换成词汇表上各个词语的概率的时间复杂度。V即表示词汇表的大小。<br>如果不对公式的最后一项$H \times V$进行处理，则上述的时间复杂度将由该项主导，因为V的取值远远大于N，H和D。但是我们可以通过使用层次softmax或者避免对词概率进行整个词汇表的softmax，从而降低第3项的大小。通过层次softmax可将第3项的计算复杂度降到$H \times {\log _2}V$，从而整个Q的计算复杂度将由第2项主导。<strong>本文的修改将会去掉隐藏层，所以这个第2项将会去除掉，从而显著的提高训练速度</strong>  </p>
 <h4 id="循环神经网络语言模型"><a href="#循环神经网络语言模型" class="headerlink" title="循环神经网络语言模型"></a>循环神经网络语言模型</h4><p>循环神经网络语言模型客服了前馈神经网络语言模型的一些缺点。如：</p>
