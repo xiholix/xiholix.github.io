@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="宏亮">
 <meta property="og:description" content="AbstractSkip-gram模型是一个学习高质量的词分布向量表示的方法，这个向量可以捕获许多细微的语法和语义关系。在本文将提出一些策略用来提高训练的词向量的质量和提高训练速度。  提出对高频词语进行下采样，加速训练过程和提高词向量质量（特别出现频率低的词） 通过负采样替代层次softmax（能够提高高频率词汇的词向量质量） 提出一个简单的从文本中发现短语，从而学习出短语向量的方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-24T16:01:37.101Z">
+<meta property="og:updated_time" content="2018-07-24T16:08:00.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Distributed Representation of Words and Phrases and their Compositionality">
 <meta name="twitter:description" content="AbstractSkip-gram模型是一个学习高质量的词分布向量表示的方法，这个向量可以捕获许多细微的语法和语义关系。在本文将提出一些策略用来提高训练的词向量的质量和提高训练速度。  提出对高频词语进行下采样，加速训练过程和提高词向量质量（特别出现频率低的词） 通过负采样替代层次softmax（能够提高高频率词汇的词向量质量） 提出一个简单的从文本中发现短语，从而学习出短语向量的方法">
@@ -357,9 +357,9 @@
 </ol>
 <h3 id="Negative-sample"><a href="#Negative-sample" class="headerlink" title="Negative sample"></a>Negative sample</h3><p>该方法可以作为层次softmax的替代，并且该方法是Noise Contrastive Estimation(NCE)的一种简化模式。<br>在这里由几个经验数据，对于较小的数据集每次的负样本的k的取值可以是5-20，而对于大的数据集，负样本的数目可以是2-5。<br>同时对于负采样的分布，采用的unigram词频的3/4次幂构成的分布。<br>关于Negative sample为什么能提高高频词的词向量的质量，而层次softmax的低频率词向量较好在于，层次softmax的低频词的词向量可以根据从其父节点继承一些信息过来，所以能够得到较好的更新，而Negative Sample因为是直接随机取负样本，高频的词的出现的概率更高所以能得到更好的更新。该解释参考自<a href="https://stats.stackexchange.com/questions/180076/why-is-hierarchical-softmax-better-for-infrequent-words-while-negative-sampling/180089" target="_blank" rel="noopener">stackexchange</a>。  </p>
 <h3 id="subsampling-for-Frequent-Words"><a href="#subsampling-for-Frequent-Words" class="headerlink" title="subsampling for Frequent Words"></a>subsampling for Frequent Words</h3><p>原因：由于一些常用的词语如a、the等它们出现的频率特别高，但是它们与一些词共现时提供的信息比一些低频词共现要少很多。所以要以一定概率丢弃一些高频词<br>实现：以如下公式丢弃训练集中的一些高频词汇<br>
-\begin{equation}
+$$
 P\left( {{w_i}} \right) = 1 - \sqrt {\frac{t}{{f\left( {{w_i}} \right)}}} 
-\end{equation}
+$$
 <br>其中t是个阈值超参数，其一般的取值是$10^{-5}$</p>
 <h3 id="Learning-Phrases"><a href="#Learning-Phrases" class="headerlink" title="Learning Phrases"></a>Learning Phrases</h3><p>首先通过如下公式将训练集中的最可能组成Pharse的词汇找出来将其变成一个token，具体公式如下：<br>$$score(w_i, w_j) = \frac{count(w_i, w_j)-\delta}{count(w_i) \times count(w_j)}$$<br>其中$\delta$是用来防止将很低频的词汇也赋予较高的score，使得其也变成一个Phrase.在处理的时候会多次处理训练集，并将score的阈值不断调小，这样可以使得模型能够将多词组成的phrase通过多次的扫描数据集不断拼接出来。  </p>
 <ol>
@@ -401,6 +401,10 @@ P\left( {{w_i}} \right) = 1 - \sqrt {\frac{t}{{f\left( {{w_i}} \right)}}}
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/25/hexo相关问题解决办法/" rel="prev" title="hexo相关问题解决办法">
+                hexo相关问题解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -518,7 +522,7 @@ P\left( {{w_i}} \right) = 1 - \sqrt {\frac{t}{{f\left( {{w_i}} \right)}}}
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
