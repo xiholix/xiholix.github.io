@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1g27swuj20mb0ujmxv.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1h6ffrmj20or0tu3z4.jpg">
-<meta property="og:updated_time" content="2018-07-24T09:32:32.849Z">
+<meta property="og:updated_time" content="2018-07-24T10:37:57.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Efficient Estimation of Word Representation in Vector Space">
 <meta name="twitter:description" content="Abstract本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果 Introduction之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。    本文的目标是介绍">
@@ -362,8 +362,9 @@
 <li>RNN比浅层的前馈神经网络具有更强的表达能力    </li>
 </ul>
 <p>网络只包括一个RNN层和一个输出层，其Q表示如下：<br>$$Q=H \times H + H\times V$$<br>其中H表示RNN隐层大小也是词向量大小。同样通过层次softmax操作，可以使得最后一项变为$H \times {log_2}V$。以上Q公式是论文里的，我觉得第一项还是需要添加对应的上下文的长度T。因为RNN里由$h_t = tanh(W(h_{t-1};x_t))$,而这个操作的时间复杂度已经是$H \times H$了，所以对长度为T的序列的时间复杂度应该是$T \times H \times H$。</p>
-<h3 id="New-Log-linear-Models"><a href="#New-Log-linear-Models" class="headerlink" title="New Log-linear Models"></a>New Log-linear Models</h3><p>Continuous Bag-of-Words Model即是将前馈神经网络语言模型去除hidden层的模型，Skip-gram模型是用中心词预测其上下文词的模型。两者的模型图如下：<br><img src="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1g27swuj20mb0ujmxv.jpg" alt="CBOW"></p>
-<p><img src="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1h6ffrmj20or0tu3z4.jpg" alt="Skip-gram"></p>
+<h3 id="New-Log-linear-Models"><a href="#New-Log-linear-Models" class="headerlink" title="New Log-linear Models"></a>New Log-linear Models</h3><p>Continuous Bag-of-Words Model即是将前馈神经网络语言模型去除hidden层的模型，Skip-gram模型是用中心词预测其上下文词的模型。两者的模型图如下：</p>
+<center class="half"><br><img src="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1g27swuj20mb0ujmxv.jpg" width="300"><br><img src="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1h6ffrmj20or0tu3z4.jpg" width="300"><br></center>
+
 <p><strong>对于skip-gram模型增加窗口尺寸c，可以使得模型训练得到的词向量更好，但是会增加模型的计算复杂度</strong>  </p>
 <h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>之前有论文指出词语直接有着多种不同的相似性。<br>我们发现当我们在大量的数据上训练高纬词向量时，我们得到的词向量可以用来回答表达词语之间微妙的语义关系的问题。<br>通过实验发现，到了一定的数据量和维度后单独增加这两个数值，对于词向量的质量不再有提高。要同时增加这两个数值才能提高质量<br><strong>增加训练数据</strong></p>
 <ul>
