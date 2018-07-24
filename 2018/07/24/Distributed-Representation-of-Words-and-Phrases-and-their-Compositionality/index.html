@@ -79,20 +79,17 @@
 
 
 
-<meta name="description" content="Abstract本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果 Introduction之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。    本文的目标是介绍">
+<meta name="description" content="AbstractSkip-gram模型是一个学习高质量的词分布向量表示的方法，这个向量可以捕获许多细微的语法和语义关系。在本文将提出一些策略用来提高训练的词向量的质量和提高训练速度。  提出对高频词语进行下采样，加速训练过程和提高词向量质量（特别出现频率低的词） 通过负采样替代层次softmax（能够提高高频率词汇的词向量质量） 提出一个简单的从文本中发现短语，从而学习出短语向量的方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Efficient Estimation of Word Representation in Vector Space">
-<meta property="og:url" content="http://yoursite.com/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/index.html">
+<meta property="og:title" content="Distributed Representation of Words and Phrases and their Compositionality">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/Distributed-Representation-of-Words-and-Phrases-and-their-Compositionality/index.html">
 <meta property="og:site_name" content="宏亮">
-<meta property="og:description" content="Abstract本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果 Introduction之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。    本文的目标是介绍">
+<meta property="og:description" content="AbstractSkip-gram模型是一个学习高质量的词分布向量表示的方法，这个向量可以捕获许多细微的语法和语义关系。在本文将提出一些策略用来提高训练的词向量的质量和提高训练速度。  提出对高频词语进行下采样，加速训练过程和提高词向量质量（特别出现频率低的词） 通过负采样替代层次softmax（能够提高高频率词汇的词向量质量） 提出一个简单的从文本中发现短语，从而学习出短语向量的方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1g27swuj20mb0ujmxv.jpg">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1h6ffrmj20or0tu3z4.jpg">
-<meta property="og:updated_time" content="2018-07-24T10:37:57.341Z">
+<meta property="og:updated_time" content="2018-07-24T16:01:37.101Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Efficient Estimation of Word Representation in Vector Space">
-<meta name="twitter:description" content="Abstract本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果 Introduction之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。    本文的目标是介绍">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1g27swuj20mb0ujmxv.jpg">
+<meta name="twitter:title" content="Distributed Representation of Words and Phrases and their Compositionality">
+<meta name="twitter:description" content="AbstractSkip-gram模型是一个学习高质量的词分布向量表示的方法，这个向量可以捕获许多细微的语法和语义关系。在本文将提出一些策略用来提高训练的词向量的质量和提高训练速度。  提出对高频词语进行下采样，加速训练过程和提高词向量质量（特别出现频率低的词） 通过负采样替代层次softmax（能够提高高频率词汇的词向量质量） 提出一个简单的从文本中发现短语，从而学习出短语向量的方法">
 
 
 
@@ -122,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/24/Distributed-Representation-of-Words-and-Phrases-and-their-Compositionality/"/>
 
 
 
 
 
-  <title>Efficient Estimation of Word Representation in Vector Space | 宏亮</title>
+  <title>Distributed Representation of Words and Phrases and their Compositionality | 宏亮</title>
   
 
 
@@ -269,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/Distributed-Representation-of-Words-and-Phrases-and-their-Compositionality/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiholix">
@@ -286,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Efficient Estimation of Word Representation in Vector Space</h1>
+          <h1 class="post-title" itemprop="name headline">Distributed Representation of Words and Phrases and their Compositionality</h1>
         
 
         <div class="post-meta">
@@ -298,7 +295,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-24T17:30:03+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-24T23:43:26+08:00">
                 2018-07-24
               </time>
             
@@ -317,8 +314,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/" itemprop="commentCount"></span>
+                <a href="/2018/07/24/Distributed-Representation-of-Words-and-Phrases-and-their-Compositionality/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/24/Distributed-Representation-of-Words-and-Phrases-and-their-Compositionality/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -351,28 +348,26 @@
       
 
       
-        <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果</p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。<br>    本文的目标是介绍一个技术能够在很大数据集上快速的学习到质量很好的词向量。</p>
-<a id="more"></a>
-<h3 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h3><p>本文采用度量模型计算复杂度的方式是由完全训练整个模型所需的参数数目决定。对于所有的模型，其计算复杂度可表示成如下公式：<br>$$O = E \times T \times Q$$<br>其中E是指训练的epoch数目，T是指训练集的词的数目，Q是每个模型进行一次训练的复杂度。不同的模型它的取值就不同。</p>
-<h4 id="前馈神经网络语言模型"><a href="#前馈神经网络语言模型" class="headerlink" title="前馈神经网络语言模型"></a>前馈神经网络语言模型</h4><p>模型由Project Layer(根据索引表示得到向量表示)，隐藏层和输出层，其Q的计算公式如下：<br>$${\rm{Q}} = N \times D + N \times D \times H + H \times V$$<br>其中$N \times D$表示的是其输入经过lookup table操作后变成一个$N \times D$的矩阵，其中N是指输入的长度，D表示词向量的维度。$N\times D \times H$表示将词向量表示的数据转换成隐藏表示的时间复杂度。最后是将隐层表示转换成词汇表上各个词语的概率的时间复杂度。V即表示词汇表的大小。<br>如果不对公式的最后一项$H \times V$进行处理，则上述的时间复杂度将由该项主导，因为V的取值远远大于N，H和D。但是我们可以通过使用层次softmax或者避免对词概率进行整个词汇表的softmax，从而降低第3项的大小。通过层次softmax可将第3项的计算复杂度降到$H \times {\log _2}V$，从而整个Q的计算复杂度将由第2项主导。<strong>本文的修改将会去掉隐藏层，所以这个第2项将会去除掉，从而显著的提高训练速度</strong>  </p>
-<h4 id="循环神经网络语言模型"><a href="#循环神经网络语言模型" class="headerlink" title="循环神经网络语言模型"></a>循环神经网络语言模型</h4><p>循环神经网络语言模型客服了前馈神经网络语言模型的一些缺点。如：</p>
-<ul>
-<li>不需要指定输入上下文的长度N</li>
-<li>RNN比浅层的前馈神经网络具有更强的表达能力    </li>
-</ul>
-<p>网络只包括一个RNN层和一个输出层，其Q表示如下：<br>$$Q=H \times H + H\times V$$<br>其中H表示RNN隐层大小也是词向量大小。同样通过层次softmax操作，可以使得最后一项变为$H \times {log_2}V$。以上Q公式是论文里的，我觉得第一项还是需要添加对应的上下文的长度T。因为RNN里由$h_t = tanh(W(h_{t-1};x_t))$,而这个操作的时间复杂度已经是$H \times H$了，所以对长度为T的序列的时间复杂度应该是$T \times H \times H$。</p>
-<h3 id="New-Log-linear-Models"><a href="#New-Log-linear-Models" class="headerlink" title="New Log-linear Models"></a>New Log-linear Models</h3><p>Continuous Bag-of-Words Model即是将前馈神经网络语言模型去除hidden层的模型，Skip-gram模型是用中心词预测其上下文词的模型。两者的模型图如下：</p>
-<center class="half"><br><img src="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1g27swuj20mb0ujmxv.jpg" width="300"><br><img src="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1h6ffrmj20or0tu3z4.jpg" width="300"><br></center>
-
-<p><strong>对于skip-gram模型增加窗口尺寸c，可以使得模型训练得到的词向量更好，但是会增加模型的计算复杂度</strong>  </p>
-<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>之前有论文指出词语直接有着多种不同的相似性。<br>我们发现当我们在大量的数据上训练高纬词向量时，我们得到的词向量可以用来回答表达词语之间微妙的语义关系的问题。<br>通过实验发现，到了一定的数据量和维度后单独增加这两个数值，对于词向量的质量不再有提高。要同时增加这两个数值才能提高质量<br><strong>增加训练数据</strong></p>
-<ul>
-<li>NNLM结果要比RNNLM结果好，因为RNNLM中没有project layer</li>
-<li>CBOW的效果与NNLM在语义任务上相似，但是在语法任务上的效果要好些</li>
-<li>Skip-gram的语法任务效果比CBOW稍微差点，但是语义任务效果最好</li>
-<li>使用两倍的数据训练一轮得到的词向量的效果与用一倍数据集训练三轮的效果一样</li>
-</ul>
+        <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Skip-gram模型是一个学习高质量的词分布向量表示的方法，这个向量可以捕获许多细微的语法和语义关系。在本文将提出一些策略用来提高训练的词向量的质量和提高训练速度。</p>
+<ol>
+<li>提出对高频词语进行下采样，加速训练过程和提高词向量质量（特别出现频率低的词）</li>
+<li>通过负采样替代层次softmax（能够提高高频率词汇的词向量质量）</li>
+<li>提出一个简单的从文本中发现短语，从而学习出短语向量的方法<a id="more"></a>
+<h3 id="Hierarchical-Softmax"><a href="#Hierarchical-Softmax" class="headerlink" title="Hierarchical Softmax"></a>Hierarchical Softmax</h3>层次softmax是一个用来将得到一个词针对整个词汇表的归一化概率这个操作由直接使用softmax所需要的O(V)时间复杂度降低到$O(log_2 V)$，具体做法就是通过构造一棵二叉树，用V个叶子代表词汇，由根到叶子的路径上的概率乘积表示相应词汇的乘积。</li>
+</ol>
+<h3 id="Negative-sample"><a href="#Negative-sample" class="headerlink" title="Negative sample"></a>Negative sample</h3><p>该方法可以作为层次softmax的替代，并且该方法是Noise Contrastive Estimation(NCE)的一种简化模式。<br>在这里由几个经验数据，对于较小的数据集每次的负样本的k的取值可以是5-20，而对于大的数据集，负样本的数目可以是2-5。<br>同时对于负采样的分布，采用的unigram词频的3/4次幂构成的分布。<br>关于Negative sample为什么能提高高频词的词向量的质量，而层次softmax的低频率词向量较好在于，层次softmax的低频词的词向量可以根据从其父节点继承一些信息过来，所以能够得到较好的更新，而Negative Sample因为是直接随机取负样本，高频的词的出现的概率更高所以能得到更好的更新。该解释参考自<a href="https://stats.stackexchange.com/questions/180076/why-is-hierarchical-softmax-better-for-infrequent-words-while-negative-sampling/180089" target="_blank" rel="noopener">stackexchange</a>。  </p>
+<h3 id="subsampling-for-Frequent-Words"><a href="#subsampling-for-Frequent-Words" class="headerlink" title="subsampling for Frequent Words"></a>subsampling for Frequent Words</h3><p>原因：由于一些常用的词语如a、the等它们出现的频率特别高，但是它们与一些词共现时提供的信息比一些低频词共现要少很多。所以要以一定概率丢弃一些高频词<br>实现：以如下公式丢弃训练集中的一些高频词汇<br>
+\begin{equation}
+P\left( {{w_i}} \right) = 1 - \sqrt {\frac{t}{{f\left( {{w_i}} \right)}}} 
+\end{equation}
+<br>其中t是个阈值超参数，其一般的取值是$10^{-5}$</p>
+<h3 id="Learning-Phrases"><a href="#Learning-Phrases" class="headerlink" title="Learning Phrases"></a>Learning Phrases</h3><p>首先通过如下公式将训练集中的最可能组成Pharse的词汇找出来将其变成一个token，具体公式如下：<br>$$score(w_i, w_j) = \frac{count(w_i, w_j)-\delta}{count(w_i) \times count(w_j)}$$<br>其中$\delta$是用来防止将很低频的词汇也赋予较高的score，使得其也变成一个Phrase.在处理的时候会多次处理训练集，并将score的阈值不断调小，这样可以使得模型能够将多词组成的phrase通过多次的扫描数据集不断拼接出来。  </p>
+<ol>
+<li>在训练Phrase的时候，如果不适用subsample， HS方法的效果不是很好，但是如果使用了subsample，HS的结果最好。</li>
+<li>很大的数据集对于HS训练Phrase也很重要</li>
+</ol>
+<h3 id="Additive-Compositionality"><a href="#Additive-Compositionality" class="headerlink" title="Additive Compositionality"></a>Additive Compositionality</h3><p>在模型中训练的词向量存在着如下的关系：vec(Russian)+vec(river) = vec(Volga River).这种可能可以理解成词向量其实是包含了它的分布特性在向量表示中，因为词向量就是通过用目标词的词向量预测它的上下文中的词来训练词向量的。所以它会在向量中包含它的上下文信息。Volga River很频繁的与Russian以及River出现在相同的语境中。而向量加法操作可以看成是两个词语的上下文分布的并操作，因为只有两个向量都很大的维度，才会在结果向量中比较突出，代表这个语义更明显。所以在Russian与river的并操作上下文中，Volga River的上下文也与其类似，所以它们的词向量也很接近。  </p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p> 1.任务敏感，且对结果影响较大的超参数主要有向量的维度、subsample的比率以及的训练的窗口长度</p>
 
       
     </div>
@@ -397,8 +392,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/23/配置hexo的mathjax、评论以及访问统计/" rel="next" title="配置hexo的mathjax、评论以及访问统计">
-                <i class="fa fa-chevron-left"></i> 配置hexo的mathjax、评论以及访问统计
+              <a href="/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/" rel="next" title="Efficient Estimation of Word Representation in Vector Space">
+                <i class="fa fa-chevron-left"></i> Efficient Estimation of Word Representation in Vector Space
               </a>
             
           </div>
@@ -406,10 +401,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/24/Distributed-Representation-of-Words-and-Phrases-and-their-Compositionality/" rel="prev" title="Distributed Representation of Words and Phrases and their Compositionality">
-                Distributed Representation of Words and Phrases and their Compositionality <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Architecture"><span class="nav-number">3.</span> <span class="nav-text">Model Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前馈神经网络语言模型"><span class="nav-number">3.1.</span> <span class="nav-text">前馈神经网络语言模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环神经网络语言模型"><span class="nav-number">3.2.</span> <span class="nav-text">循环神经网络语言模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#New-Log-linear-Models"><span class="nav-number">4.</span> <span class="nav-text">New Log-linear Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Result"><span class="nav-number">5.</span> <span class="nav-text">Result</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hierarchical-Softmax"><span class="nav-number">2.</span> <span class="nav-text">Hierarchical Softmax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Negative-sample"><span class="nav-number">3.</span> <span class="nav-text">Negative sample</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#subsampling-for-Frequent-Words"><span class="nav-number">4.</span> <span class="nav-text">subsampling for Frequent Words</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Learning-Phrases"><span class="nav-number">5.</span> <span class="nav-text">Learning Phrases</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Additive-Compositionality"><span class="nav-number">6.</span> <span class="nav-text">Additive Compositionality</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conclusion"><span class="nav-number">7.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
             
 
           </div>
