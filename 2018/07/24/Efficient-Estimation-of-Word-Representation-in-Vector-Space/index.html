@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="1. 使用Kramed代替 Marked在工程目录下(即hexo init执行的那个目录下)执行以下命令安装Kramed12npm uninstall hexo-renderer-marked --savenpm install hexo-renderer-kramed --save 然后将/node_modules/hexo-renderer-kramed/lib/renderer.js中的内容">
+<meta name="description" content="Abstract本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果 Introduction之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。    本文的目标是介绍">
 <meta property="og:type" content="article">
-<meta property="og:title" content="配置hexo的mathjax、评论以及访问统计">
-<meta property="og:url" content="http://yoursite.com/2018/07/23/配置hexo的mathjax、评论以及访问统计/index.html">
+<meta property="og:title" content="Efficient Estimation of Word Representation in Vector Space">
+<meta property="og:url" content="http://yoursite.com/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/index.html">
 <meta property="og:site_name" content="宏亮">
-<meta property="og:description" content="1. 使用Kramed代替 Marked在工程目录下(即hexo init执行的那个目录下)执行以下命令安装Kramed12npm uninstall hexo-renderer-marked --savenpm install hexo-renderer-kramed --save 然后将/node_modules/hexo-renderer-kramed/lib/renderer.js中的内容">
+<meta property="og:description" content="Abstract本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果 Introduction之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。    本文的目标是介绍">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-23T11:56:33.519Z">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1g27swuj20mb0ujmxv.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1h6ffrmj20or0tu3z4.jpg">
+<meta property="og:updated_time" content="2018-07-24T09:30:35.997Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="配置hexo的mathjax、评论以及访问统计">
-<meta name="twitter:description" content="1. 使用Kramed代替 Marked在工程目录下(即hexo init执行的那个目录下)执行以下命令安装Kramed12npm uninstall hexo-renderer-marked --savenpm install hexo-renderer-kramed --save 然后将/node_modules/hexo-renderer-kramed/lib/renderer.js中的内容">
+<meta name="twitter:title" content="Efficient Estimation of Word Representation in Vector Space">
+<meta name="twitter:description" content="Abstract本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果 Introduction之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。    本文的目标是介绍">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1g27swuj20mb0ujmxv.jpg">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/23/配置hexo的mathjax、评论以及访问统计/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/"/>
 
 
 
 
 
-  <title>配置hexo的mathjax、评论以及访问统计 | 宏亮</title>
+  <title>Efficient Estimation of Word Representation in Vector Space | 宏亮</title>
   
 
 
@@ -266,7 +269,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/23/配置hexo的mathjax、评论以及访问统计/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xiholix">
@@ -283,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">配置hexo的mathjax、评论以及访问统计</h1>
+          <h1 class="post-title" itemprop="name headline">Efficient Estimation of Word Representation in Vector Space</h1>
         
 
         <div class="post-meta">
@@ -295,8 +298,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-23T18:52:57+08:00">
-                2018-07-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-24T17:30:03+08:00">
+                2018-07-24
               </time>
             
 
@@ -314,8 +317,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/07/23/配置hexo的mathjax、评论以及访问统计/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/23/配置hexo的mathjax、评论以及访问统计/" itemprop="commentCount"></span>
+                <a href="/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -348,23 +351,26 @@
       
 
       
-        <h3 id="1-使用Kramed代替-Marked"><a href="#1-使用Kramed代替-Marked" class="headerlink" title="1. 使用Kramed代替 Marked"></a>1. 使用Kramed代替 Marked</h3><p>在工程目录下(即hexo init执行的那个目录下)执行以下命令安装Kramed<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure></p>
-<p>然后将/node_modules/hexo-renderer-kramed/lib/renderer.js中的内容按如下方式修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">更改前：</span><br><span class="line">// Change inline math rule</span><br><span class="line">function formatText(text) &#123;</span><br><span class="line">    // Fit kramed&apos;s rule: $$ + \1 + $$</span><br><span class="line">    return text.replace(/`\$(.*?)\$`/g, &apos;$$$$$1$$$$&apos;);</span><br><span class="line">&#125;</span><br><span class="line">更改后：</span><br><span class="line">// Change inline math rule</span><br><span class="line">function formatText(text) &#123;</span><br><span class="line">    return text;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<h3 id="2-停止使用hexo-math-安装-hexo-renderer-mathjax"><a href="#2-停止使用hexo-math-安装-hexo-renderer-mathjax" class="headerlink" title="2. 停止使用hexo-math,安装 hexo-renderer-mathjax"></a>2. 停止使用hexo-math,安装 hexo-renderer-mathjax</h3><p>命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-math --save</span><br><span class="line">npm install hexo-renderer-mathjax --save</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-更新-Mathjax-的-CDN-链接"><a href="#3-更新-Mathjax-的-CDN-链接" class="headerlink" title="3. 更新 Mathjax 的 CDN 链接"></a>3. 更新 Mathjax 的 CDN 链接</h3><p>将/node_modules/hexo-renderer-mathjax/mathjax.html中的CDN链接更改为下面的链接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-修改hexo的默认转义规则"><a href="#4-修改hexo的默认转义规则" class="headerlink" title="4. 修改hexo的默认转义规则"></a>4. 修改hexo的默认转义规则</h3><p>打开/nodes_modules/marked/lib/marked.js文件对其进行如下几项修改<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">更改前</span><br><span class="line">escape: /^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/,</span><br><span class="line">em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span><br><span class="line"></span><br><span class="line">更改后：</span><br><span class="line">escape: /^\\([`*\[\]()# +\-.!_&gt;])/,</span><br><span class="line">em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-开启mathjax"><a href="#5-开启mathjax" class="headerlink" title="5. 开启mathjax"></a>5. 开启mathjax</h3><p>在主题的_config.yml中添加(如果不存在)或修改(如果存在)mathjax配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mathjax:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure></p>
-<h3 id="6-安装next主题并配置Next-Mist"><a href="#6-安装next主题并配置Next-Mist" class="headerlink" title="6. 安装next主题并配置Next.Mist"></a>6. 安装next主题并配置Next.Mist</h3><p>在项目根目录执行如下git命令，安装Next主题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next themes/next</span><br><span class="line">cd themes/next</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure></p>
-<p>在根目录的_config.yml更改主题配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure></p>
-<p>在themes/next下的_config.yml更改Mist配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">将</span><br><span class="line">scheme: Muse</span><br><span class="line">更改为</span><br><span class="line">scheme: Mist</span><br></pre></td></tr></table></figure></p>
-<h3 id="7-网站底部加上访问量-使用busuanzi"><a href="#7-网站底部加上访问量-使用busuanzi" class="headerlink" title="7. 网站底部加上访问量(使用busuanzi)"></a>7. 网站底部加上访问量(使用busuanzi)</h3><p>在themes/next里的_config.yml将busuanzi的统计打开<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">busuanzi_count:</span><br><span class="line">  # count values only if the other configs are false</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure></p>
-<h3 id="8-配置评论-使用Valine和Leancloud"><a href="#8-配置评论-使用Valine和Leancloud" class="headerlink" title="8.配置评论(使用Valine和Leancloud)"></a>8.配置评论(使用Valine和Leancloud)</h3><p>首先注册Leanclout账号<a href="https://leancloud.cn/dashboard/applist.html#/apps%20%E6%B3%A8%E5%86%8C%E9%93%BE%E6%8E%A5" target="_blank" rel="noopener">注册链接</a>，创建一个应用，并获取其appkey和appid<br>然后修改themes/next下的_config.yml的对应配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">valine:</span><br><span class="line">  enable: true</span><br><span class="line">  appid:  # your leancloud application appid</span><br><span class="line">  appkey:  # your leancloud application appkey</span><br></pre></td></tr></table></figure></p>
-<h3 id="9-开启分享功能-baidushare"><a href="#9-开启分享功能-baidushare" class="headerlink" title="9.开启分享功能(baidushare)"></a>9.开启分享功能(baidushare)</h3><p>编辑themes/next下的_config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">baidushare:</span><br><span class="line"> type: button</span><br></pre></td></tr></table></figure></p>
-<h3 id="10-与github链接"><a href="#10-与github链接" class="headerlink" title="10. 与github链接"></a>10. 与github链接</h3><p>首先将电脑的ssh公钥加入到github账号中，然后配置项目根目录下的_config.yml<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:usrname/username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
-<h3 id="11-配置搜索功能"><a href="#11-配置搜索功能" class="headerlink" title="11. 配置搜索功能"></a>11. 配置搜索功能</h3><p>在项目根目录执行如下命令安装相应组件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure></p>
-<p>修改站点配置文件，添加如下配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">    path: search.xml</span><br><span class="line">    field: post</span><br><span class="line">    format: html</span><br><span class="line">    limit: 10000</span><br></pre></td></tr></table></figure></p>
-<p>修改主题配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">    enable: true</span><br></pre></td></tr></table></figure></p>
+        <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。<br>    本文的目标是介绍一个技术能够在很大数据集上快速的学习到质量很好的词向量。</p>
+<h3 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h3><p>本文采用度量模型计算复杂度的方式是由完全训练整个模型所需的参数数目决定。对于所有的模型，其计算复杂度可表示成如下公式：<br>$$O = E \times T \times Q$$<br>其中E是指训练的epoch数目，T是指训练集的词的数目，Q是每个模型进行一次训练的复杂度。不同的模型它的取值就不同。</p>
+<h4 id="前馈神经网络语言模型"><a href="#前馈神经网络语言模型" class="headerlink" title="前馈神经网络语言模型"></a>前馈神经网络语言模型</h4><p>模型由Project Layer(根据索引表示得到向量表示)，隐藏层和输出层，其Q的计算公式如下：<br>$${\rm{Q}} = N \times D + N \times D \times H + H \times V$$<br>其中$N \times D$表示的是其输入经过lookup table操作后变成一个$N \times D$的矩阵，其中N是指输入的长度，D表示词向量的维度。$N\times D \times H$表示将词向量表示的数据转换成隐藏表示的时间复杂度。最后是将隐层表示转换成词汇表上各个词语的概率的时间复杂度。V即表示词汇表的大小。<br>如果不对公式的最后一项$H \times V$进行处理，则上述的时间复杂度将由该项主导，因为V的取值远远大于N，H和D。但是我们可以通过使用层次softmax或者避免对词概率进行整个词汇表的softmax，从而降低第3项的大小。通过层次softmax可将第3项的计算复杂度降到$H \times {\log _2}V$，从而整个Q的计算复杂度将由第2项主导。<strong>本文的修改将会去掉隐藏层，所以这个第2项将会去除掉，从而显著的提高训练速度</strong>  </p>
+<h4 id="循环神经网络语言模型"><a href="#循环神经网络语言模型" class="headerlink" title="循环神经网络语言模型"></a>循环神经网络语言模型</h4><p>循环神经网络语言模型客服了前馈神经网络语言模型的一些缺点。如：</p>
+<ul>
+<li>不需要指定输入上下文的长度N</li>
+<li>RNN比浅层的前馈神经网络具有更强的表达能力    </li>
+</ul>
+<p>网络只包括一个RNN层和一个输出层，其Q表示如下：<br>$$Q=H \times H + H\times V$$<br>其中H表示RNN隐层大小也是词向量大小。同样通过层次softmax操作，可以使得最后一项变为$H \times {log_2}V$。以上Q公式是论文里的，我觉得第一项还是需要添加对应的上下文的长度T。因为RNN里由$h_t = tanh(W(h_{t-1};x_t))$,而这个操作的时间复杂度已经是$H \times H$了，所以对长度为T的序列的时间复杂度应该是$T \times H \times H$。</p>
+<h3 id="New-Log-linear-Models"><a href="#New-Log-linear-Models" class="headerlink" title="New Log-linear Models"></a>New Log-linear Models</h3><p>Continuous Bag-of-Words Model即是将前馈神经网络语言模型去除hidden层的模型，Skip-gram模型是用中心词预测其上下文词的模型。两者的模型图如下：<br><img src="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1g27swuj20mb0ujmxv.jpg" alt="CBOW"></p>
+<p><img src="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1h6ffrmj20or0tu3z4.jpg" alt="Skip-gram"></p>
+<p><strong>对于skip-gram模型增加窗口尺寸c，可以使得模型训练得到的词向量更好，但是会增加模型的计算复杂度</strong>  </p>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>之前有论文指出词语直接有着多种不同的相似性。<br>我们发现当我们在大量的数据上训练高纬词向量时，我们得到的词向量可以用来回答表达词语之间微妙的语义关系的问题。<br>通过实验发现，到了一定的数据量和维度后单独增加这两个数值，对于词向量的质量不再有提高。要同时增加这两个数值才能提高质量<br><strong>增加训练数据</strong></p>
+<ul>
+<li>NNLM结果要比RNNLM结果好，因为RNNLM中没有project layer</li>
+<li>CBOW的效果与NNLM在语义任务上相似，但是在语法任务上的效果要好些</li>
+<li>Skip-gram的语法任务效果比CBOW稍微差点，但是语义任务效果最好</li>
+<li>使用两倍的数据训练一轮得到的词向量的效果与用一倍数据集训练三轮的效果一样</li>
+</ul>
 
       
     </div>
@@ -389,8 +395,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/23/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2018/07/23/配置hexo的mathjax、评论以及访问统计/" rel="next" title="配置hexo的mathjax、评论以及访问统计">
+                <i class="fa fa-chevron-left"></i> 配置hexo的mathjax、评论以及访问统计
               </a>
             
           </div>
@@ -398,10 +404,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/" rel="prev" title="Efficient Estimation of Word Representation in Vector Space">
-                Efficient Estimation of Word Representation in Vector Space <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -556,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-使用Kramed代替-Marked"><span class="nav-number">1.</span> <span class="nav-text">1. 使用Kramed代替 Marked</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-停止使用hexo-math-安装-hexo-renderer-mathjax"><span class="nav-number">2.</span> <span class="nav-text">2. 停止使用hexo-math,安装 hexo-renderer-mathjax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-更新-Mathjax-的-CDN-链接"><span class="nav-number">3.</span> <span class="nav-text">3. 更新 Mathjax 的 CDN 链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-修改hexo的默认转义规则"><span class="nav-number">4.</span> <span class="nav-text">4. 修改hexo的默认转义规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-开启mathjax"><span class="nav-number">5.</span> <span class="nav-text">5. 开启mathjax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-安装next主题并配置Next-Mist"><span class="nav-number">6.</span> <span class="nav-text">6. 安装next主题并配置Next.Mist</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-网站底部加上访问量-使用busuanzi"><span class="nav-number">7.</span> <span class="nav-text">7. 网站底部加上访问量(使用busuanzi)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-配置评论-使用Valine和Leancloud"><span class="nav-number">8.</span> <span class="nav-text">8.配置评论(使用Valine和Leancloud)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-开启分享功能-baidushare"><span class="nav-number">9.</span> <span class="nav-text">9.开启分享功能(baidushare)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-与github链接"><span class="nav-number">10.</span> <span class="nav-text">10. 与github链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-配置搜索功能"><span class="nav-number">11.</span> <span class="nav-text">11. 配置搜索功能</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction"><span class="nav-number">2.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Architecture"><span class="nav-number">3.</span> <span class="nav-text">Model Architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前馈神经网络语言模型"><span class="nav-number">3.1.</span> <span class="nav-text">前馈神经网络语言模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#循环神经网络语言模型"><span class="nav-number">3.2.</span> <span class="nav-text">循环神经网络语言模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#New-Log-linear-Models"><span class="nav-number">4.</span> <span class="nav-text">New Log-linear Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Result"><span class="nav-number">5.</span> <span class="nav-text">Result</span></a></li></ol></div>
             
 
           </div>

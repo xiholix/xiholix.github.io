@@ -263,6 +263,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xiholix">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宏亮">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/" itemprop="url">Efficient Estimation of Word Representation in Vector Space</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-24T17:30:03+08:00">
+                2018-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/07/24/Efficient-Estimation-of-Word-Representation-in-Vector-Space/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>本文提出两个新颖的模型，能够在更少的训练时间里对更多的语料库进行训练，同时所得到的词向量在词语的语法相似度任务以及语义相似度任务的度量中取得了state-of-the-art的结果</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>之前的一些NLP系统，将利用词袋模型表示数据，这种考虑方式没有考虑到词之间的相似性。这种方法在数据集充足的时候很有效，但是对于数据集很小的情况，效果不好。<br>    本文的目标是介绍一个技术能够在很大数据集上快速的学习到质量很好的词向量。</p>
+<h3 id="Model-Architecture"><a href="#Model-Architecture" class="headerlink" title="Model Architecture"></a>Model Architecture</h3><p>本文采用度量模型计算复杂度的方式是由完全训练整个模型所需的参数数目决定。对于所有的模型，其计算复杂度可表示成如下公式：<br>$$O = E \times T \times Q$$<br>其中E是指训练的epoch数目，T是指训练集的词的数目，Q是每个模型进行一次训练的复杂度。不同的模型它的取值就不同。</p>
+<h4 id="前馈神经网络语言模型"><a href="#前馈神经网络语言模型" class="headerlink" title="前馈神经网络语言模型"></a>前馈神经网络语言模型</h4><p>模型由Project Layer(根据索引表示得到向量表示)，隐藏层和输出层，其Q的计算公式如下：<br>$${\rm{Q}} = N \times D + N \times D \times H + H \times V$$<br>其中$N \times D$表示的是其输入经过lookup table操作后变成一个$N \times D$的矩阵，其中N是指输入的长度，D表示词向量的维度。$N\times D \times H$表示将词向量表示的数据转换成隐藏表示的时间复杂度。最后是将隐层表示转换成词汇表上各个词语的概率的时间复杂度。V即表示词汇表的大小。<br>如果不对公式的最后一项$H \times V$进行处理，则上述的时间复杂度将由该项主导，因为V的取值远远大于N，H和D。但是我们可以通过使用层次softmax或者避免对词概率进行整个词汇表的softmax，从而降低第3项的大小。通过层次softmax可将第3项的计算复杂度降到$H \times {\log _2}V$，从而整个Q的计算复杂度将由第2项主导。<strong>本文的修改将会去掉隐藏层，所以这个第2项将会去除掉，从而显著的提高训练速度</strong>  </p>
+<h4 id="循环神经网络语言模型"><a href="#循环神经网络语言模型" class="headerlink" title="循环神经网络语言模型"></a>循环神经网络语言模型</h4><p>循环神经网络语言模型客服了前馈神经网络语言模型的一些缺点。如：</p>
+<ul>
+<li>不需要指定输入上下文的长度N</li>
+<li>RNN比浅层的前馈神经网络具有更强的表达能力    </li>
+</ul>
+<p>网络只包括一个RNN层和一个输出层，其Q表示如下：<br>$$Q=H \times H + H\times V$$<br>其中H表示RNN隐层大小也是词向量大小。同样通过层次softmax操作，可以使得最后一项变为$H \times {log_2}V$。以上Q公式是论文里的，我觉得第一项还是需要添加对应的上下文的长度T。因为RNN里由$h_t = tanh(W(h_{t-1};x_t))$,而这个操作的时间复杂度已经是$H \times H$了，所以对长度为T的序列的时间复杂度应该是$T \times H \times H$。</p>
+<h3 id="New-Log-linear-Models"><a href="#New-Log-linear-Models" class="headerlink" title="New Log-linear Models"></a>New Log-linear Models</h3><p>Continuous Bag-of-Words Model即是将前馈神经网络语言模型去除hidden层的模型，Skip-gram模型是用中心词预测其上下文词的模型。两者的模型图如下：<br><img src="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1g27swuj20mb0ujmxv.jpg" alt="CBOW"></p>
+<p><img src="http://ww1.sinaimg.cn/large/8edd9901ly1ftl1h6ffrmj20or0tu3z4.jpg" alt="Skip-gram"></p>
+<p><strong>对于skip-gram模型增加窗口尺寸c，可以使得模型训练得到的词向量更好，但是会增加模型的计算复杂度</strong>  </p>
+<h3 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h3><p>之前有论文指出词语直接有着多种不同的相似性。<br>我们发现当我们在大量的数据上训练高纬词向量时，我们得到的词向量可以用来回答表达词语之间微妙的语义关系的问题。<br>通过实验发现，到了一定的数据量和维度后单独增加这两个数值，对于词向量的质量不再有提高。要同时增加这两个数值才能提高质量<br><strong>增加训练数据</strong></p>
+<ul>
+<li>NNLM结果要比RNNLM结果好，因为RNNLM中没有project layer</li>
+<li>CBOW的效果与NNLM在语义任务上相似，但是在语法任务上的效果要好些</li>
+<li>Skip-gram的语法任务效果比CBOW稍微差点，但是语义任务效果最好</li>
+<li>使用两倍的数据训练一轮得到的词向量的效果与用一倍数据集训练三轮的效果一样</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/23/配置hexo的mathjax、评论以及访问统计/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -569,7 +718,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
